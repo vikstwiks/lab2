@@ -20,6 +20,7 @@ if response.status_code==200:
     min_temperature=data['main']['temp_min']
     max_temperature=data['main']['temp_max']
     visibil=data['visibility']
+    speed=data ['wind']['speed']
 # Вывод погоды
 
     print(f'Погода в городе {city}:')
@@ -28,6 +29,7 @@ if response.status_code==200:
     print(f'Минимальная температура: {min_temperature}')
     print(f'Максимальная температура: {max_temperature}')
     print(f'Видимость: {visibil}')
+    print(f'Скорость ветра: {speed}')
 else:
     print('Ошибка')
 res=requests.get('http://api.openweathermap.org/data/2.5/forecast', params={'q' : city, 'units':'metric', 'lang': 'ru', 'APPID':api_key
@@ -40,3 +42,4 @@ for i in data['list']:
     print("Минимальная темппература:",i['main']['temp_min'])
     print("Максимальная температура:",i['main']['temp_max'])
     print("Видимость:",i['visibility'])
+    print("Скорость ветра", i['wind']['speed'])
